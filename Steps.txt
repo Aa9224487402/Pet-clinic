@@ -167,7 +167,7 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 
 ---TRIVY INSTALLATION STEPS---
 
