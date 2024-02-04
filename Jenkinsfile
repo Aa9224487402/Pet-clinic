@@ -32,7 +32,7 @@ pipeline {
         
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar-scanner') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Petclinic '''
@@ -43,7 +43,7 @@ pipeline {
         
         stage("OWASP Dependency Check"){
             steps{
-                dependencyCheck additionalArguments: '--scan ./ --format HTML ', odcInstallation: 'DP'
+                dependencyCheck additionalArguments: '--scan ./ --format HTML ', odcInstallation: 'DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
@@ -57,9 +57,9 @@ pipeline {
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: '58be877c-9294-410e-98ee-6a959d73b352', toolName: 'docker') {
+                   withDockerRegistry(credentialsId: 'e39a2faa-f8c4-4723-8dba-eb18745a0c2d', toolName: 'docker') {
                         
-                        sh "docker build -t image1 ."
+                        sh "docker build -t rockstar1 ."
                         sh "docker tag image1 aryashersingh2/pet-clinic123:latest "
                         sh "docker push aryashersingh2/pet-clinic123:latest "
                     }
