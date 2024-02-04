@@ -151,6 +151,11 @@ sudo usermod -aG docker $USER
 newgrp docker
 sudo chmod 666 /var/run/docker.sock
 sudo systemctl restart docker
+
+
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community 
+docker build -t <mydockerrepo:username/imagename:version> .
+docker run -it -p 8000:8000 <imageid>
 ======================================================================================================================================
 
 --- INSTALL JENKINS ---
@@ -167,7 +172,7 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+
 
 ---TRIVY INSTALLATION STEPS---
 
