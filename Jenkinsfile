@@ -14,7 +14,7 @@ pipeline {
         
         stage("Git Checkout"){
             steps{
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/Petclinic.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Aa9224487402/Pet-clinic.git'
             }
         }
         
@@ -60,8 +60,8 @@ pipeline {
                    withDockerRegistry(credentialsId: '58be877c-9294-410e-98ee-6a959d73b352', toolName: 'docker') {
                         
                         sh "docker build -t image1 ."
-                        sh "docker tag image1 adijaiswal/pet-clinic123:latest "
-                        sh "docker push adijaiswal/pet-clinic123:latest "
+                        sh "docker tag image1 aryashersingh2/pet-clinic123:latest "
+                        sh "docker push aryashersingh2/pet-clinic123:latest "
                     }
                 }
             }
@@ -69,7 +69,7 @@ pipeline {
         
         stage("TRIVY"){
             steps{
-                sh " trivy image adijaiswal/pet-clinic123:latest"
+                sh " trivy image aryashersingh2/pet-clinic123:latest"
             }
         }
         
