@@ -7,7 +7,7 @@ pipeline {
     }
     
     environment {
-        SCANNER_HOME=tool 'sonar-scanner'
+        SCANNER_HOME=tool 'sonar scanner'
     }
     
     stages{
@@ -57,7 +57,7 @@ pipeline {
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: 'e39a2faa-f8c4-4723-8dba-eb18745a0c2d', toolName: 'docker') {
+                   withDockerRegistry(credentialsId: 'f740a48b-2db8-43c7-8485-0082fa5e84b5', toolName: 'docker') {
                         
                         sh "docker build -t rockstar1 ."
                         sh "docker tag image1 aryashersingh2/pet-clinic123:latest "
