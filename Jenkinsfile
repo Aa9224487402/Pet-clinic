@@ -57,7 +57,7 @@ pipeline {
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: 'f740a48b-2db8-43c7-8485-0082fa5e84b5', toolName: 'docker') {
+                   withDockerRegistry(credentialsId: '7e584c64-2800-414c-a606-2de754fda992', toolName: 'docker') {
                         
                         sh "docker build -t winner ."
                         sh "docker tag winner aryashersingh2/pet-clinic123:latest "
