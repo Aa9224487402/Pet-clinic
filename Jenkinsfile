@@ -60,7 +60,7 @@ pipeline {
                    withDockerRegistry(credentialsId: 'f740a48b-2db8-43c7-8485-0082fa5e84b5', toolName: 'docker') {
                         
                         sh "docker build -t rockstar1 ."
-                        sh "docker tag image1 aryashersingh2/pet-clinic123:latest "
+                        sh "docker tag rockstar1 aryashersingh2/pet-clinic123:latest "
                         sh "docker push aryashersingh2/pet-clinic123:latest "
                     }
                 }
