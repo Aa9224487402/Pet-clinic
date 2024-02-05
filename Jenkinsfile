@@ -14,7 +14,7 @@ pipeline {
         
         stage("Git Checkout"){
             steps{
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Aa9224487402/Pet-clinic.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/iam-arya/Pet-clinic.git'
             }
         }
         
@@ -32,7 +32,7 @@ pipeline {
         
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('sonar server') {
+                withSonarQubeEnv('sonar scanner') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Petclinic \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Petclinic '''
@@ -59,8 +59,8 @@ pipeline {
                 script{
                    withDockerRegistry(credentialsId: 'f740a48b-2db8-43c7-8485-0082fa5e84b5', toolName: 'docker') {
                         
-                        sh "docker build -t rockstar1 ."
-                        sh "docker tag rockstar1 aryashersingh2/pet-clinic123:latest "
+                        sh "docker build -t winner ."
+                        sh "docker tag winner aryashersingh2/pet-clinic123:latest "
                         sh "docker push aryashersingh2/pet-clinic123:latest "
                     }
                 }
